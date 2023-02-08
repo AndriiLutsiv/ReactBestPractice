@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "noImplicitAny": true, //warns about any
+        "module": "ESNext", //usualy this one or es6
+        "target": "es5", // to allow older browsers
+        "jsx": "react-jsx",
+        "allowJs": true,
+        "moduleResolution": "node",
+        // esModuleInterop allows to work as with common js modules as with require
+        "esModuleInterop": true,
+        // allowSyntheticDefaultImports allows default imports instead of "imort * as ..."
+        "allowSyntheticDefaultImports": true,
+        // base url for paths
+        "baseUrl": "."
+    },
+    "ts-node": {
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    }
+}
