@@ -12,7 +12,12 @@
         // allowSyntheticDefaultImports allows default imports instead of "imort * as ..."
         "allowSyntheticDefaultImports": true,
         // base url for paths
-        "baseUrl": "."
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "./src/*"
+            ]
+        }
     },
     "ts-node": {
         "compilerOptions": {
