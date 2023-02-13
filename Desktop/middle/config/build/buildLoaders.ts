@@ -4,10 +4,19 @@ import { BuildOptions } from "./types/config";
 
 // order of loaders MATTERS, that`s why they are put into vars
 export function buildLoaders(options: BuildOptions): RuleSetRule[] {
-    const typescriptLoader = {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
+
+    const svgLoader = {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+    };
+
+    const fileLoader = {
+        test: /\.(png|jpe?g|gif|woff|woff2)$/i,
+        use: [
+            {
+                loader: 'file-loader',
+            },
+        ],
     };
 
     const cssLoader = {
@@ -21,18 +30,27 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
                 options: {
                     modules: {
                         auto: (resPath: string) => Boolean(resPath.includes('.module.')),
-                        localIdentName: options.isDev ? `[path][name]__local` : `[hash:base64:8]`
+                        localIdentName: options.isDev
+                            ? `[path][name]__[local]--[hash:base64:5]`
+                            : `[hash:base64:8]`
                     },
                 }
             },
-
             // Compiles Sass to CSS
             "sass-loader",
         ],
     };
 
+    const typescriptLoader = {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+    };
+
     return [
+        fileLoader,
+        svgLoader,
         typescriptLoader,
-        cssLoader
+        cssLoader,
     ]
 }
