@@ -1,10 +1,9 @@
-import { RuleSetRule } from "webpack";
+import { RuleSetRule } from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BuildOptions } from "./types/config";
+import { BuildOptions } from './types/config';
 
 // order of loaders MATTERS, that`s why they are put into vars
 export function buildLoaders(options: BuildOptions): RuleSetRule[] {
-
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
@@ -26,18 +25,18 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
             options.isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             // Translates CSS into CommonJS
             {
-                loader: "css-loader",
+                loader: 'css-loader',
                 options: {
                     modules: {
                         auto: (resPath: string) => Boolean(resPath.includes('.module.')),
                         localIdentName: options.isDev
-                            ? `[path][name]__[local]--[hash:base64:5]`
-                            : `[hash:base64:8]`
+                            ? '[path][name]__[local]--[hash:base64:5]'
+                            : '[hash:base64:8]',
                     },
-                }
+                },
             },
             // Compiles Sass to CSS
-            "sass-loader",
+            'sass-loader',
         ],
     };
 
@@ -52,5 +51,5 @@ export function buildLoaders(options: BuildOptions): RuleSetRule[] {
         svgLoader,
         typescriptLoader,
         cssLoader,
-    ]
+    ];
 }
