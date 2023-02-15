@@ -1,7 +1,6 @@
 *,
 *::before,
 *::after {
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -30,7 +29,7 @@ section {
 body {
     line-height: 1;
     scroll-behavior: smooth;
-    text-rendering: optimizeSpeed;
+    text-rendering: optimizespeed;
 }
 
 ul {
@@ -47,10 +46,10 @@ q {
     quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote::before,
+blockquote::after,
+q::before,
+q::after {
     content: "";
     content: none;
 }
