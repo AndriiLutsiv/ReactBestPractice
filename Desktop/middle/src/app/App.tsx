@@ -1,5 +1,5 @@
 import './styles/index.scss';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { classNames } from 'shared/lib/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/router';
@@ -11,6 +11,13 @@ import { PageLoader } from 'widgets/PageLoader';
 
 const App = () => {
     const { theme } = useTheme();
+
+    //is used to see errorBoundary
+    // useEffect(() => {
+    //     if (Math.random() < 0.5) {
+    //         throw new Error();
+    //     }
+    // }, []);
 
     return (
         <div className={classNames('app', {}, [theme, 'cls2', 'cls3'])}>
