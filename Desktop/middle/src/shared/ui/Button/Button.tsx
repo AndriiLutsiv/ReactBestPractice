@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, FC } from 'react';
-import { classNames } from 'shared/lib/classNames';
+import { classNames } from '../../lib/classNames/classNames';// jest doesn`t like otherwise
 import cls from './Button.module.scss';
 
 export enum ThemeButton {

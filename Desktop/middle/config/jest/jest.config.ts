@@ -3,40 +3,40 @@
  * https://jestjs.io/docs/configuration
  */
 
+import path from 'path';
+
 export default {
-    // All imported modules in your tests should be mocked automatically
-    // automock: false,
-
-    // Stop running tests after `n` failures
-    // bail: 0,
-
-    // The directory where Jest should store its cached dependency information
-    // cacheDirectory: "/private/var/folders/sf/lxjkj4wd2wd634v1vhgcq5p40000gn/T/jest_dx",
-
-    // Automatically clear mock calls, instances, contexts and results before every test
     clearMocks: true,
     testEnvironment: 'jsdom',
     coveragePathIgnorePatterns: [
-        '/node_modules/'
+        '\\\\node_modules\\\\',
     ],
     moduleFileExtensions: [
         'js',
-        'mjs',
-        'cjs',
         'jsx',
         'ts',
         'tsx',
         'json',
-        'node'
+        'node',
     ],
     moduleDirectories: [
         'node_modules'
     ],
-    rootDir: '../../',
-    testMatch: [
-        '<rootDir>src/**/*/(*.)@(spec|test).[tj]s?(x)'
+    modulePaths: [
+        '<rootDir>src',
     ],
-
+    testMatch: [
+        // Обнаружил разницу между МАК ОС и ВИНДОУС!!!
+        '<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)',
+    ],
+    rootDir: '../../',
+    setupFilesAfterEnv: ['<rootDir>config/jest/setupTests.ts'],
+    moduleNameMapper: {
+        '\\.s?css$': 'identity-obj-proxy',
+        '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+        'src/(.*)': '<rootDir>/src/$1',
+        'tests/(.*)': '<rootDir>/__tests__/$1',
+    },
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
 
@@ -47,7 +47,6 @@ export default {
     // coverageDirectory: undefined,
 
     // An array of regexp pattern strings used to skip coverage collection
-
 
     // Indicates which provider should be used to instrument code for coverage
     // coverageProvider: "babel",
@@ -69,11 +68,6 @@ export default {
     // Make calling deprecated APIs throw helpful error messages
     // errorOnDeprecated: false,
 
-    // The default configuration for fake timers
-    // fakeTimers: {
-    //   "enableGlobally": false
-    // },
-
     // Force coverage collection from ignored files using an array of glob patterns
     // forceCoverageMatch: [],
 
@@ -91,9 +85,7 @@ export default {
 
     // An array of directory names to be searched recursively up from the requiring module's location
 
-
     // An array of file extensions your modules use
-
 
     // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
     // moduleNameMapper: {},
@@ -130,7 +122,6 @@ export default {
 
     // The root directory that Jest should scan for tests and modules within
 
-
     // A list of paths to directories that Jest should use to search for files in
     // roots: [
     //   "<rootDir>"
@@ -163,7 +154,7 @@ export default {
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
     // testPathIgnorePatterns: [
-    //   "/node_modules/"
+    //   "\\\\node_modules\\\\"
     // ],
 
     // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -175,13 +166,19 @@ export default {
     // This option allows use of a custom test runner
     // testRunner: "jest-circus/runner",
 
+    // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
+    // testURL: "http://localhost",
+
+    // Setting this value to "fake" allows the use of fake timers for functions such as "setTimeout"
+    // timers: "real",
+
     // A map from regular expressions to paths to transformers
     // transform: undefined,
 
     // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
     // transformIgnorePatterns: [
-    //   "/node_modules/",
-    //   "\\.pnp\\.[^\\/]+$"
+    //   "\\\\node_modules\\\\",
+    //   "\\.pnp\\.[^\\\\]+$"
     // ],
 
     // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
