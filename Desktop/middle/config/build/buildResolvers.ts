@@ -5,7 +5,7 @@ export function buildResolvers(options: BuildOptions): ResolveOptions {
     return {
         extensions: ['.tsx', '.ts', '.js'],
         preferRelative: true,
-        modules: [options.paths.srs, 'node_modules'],
+        modules: [options.paths.src, 'node_modules'],
         mainFiles: ['index'],
         alias: {},
     };
