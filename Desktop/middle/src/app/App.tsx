@@ -11,7 +11,7 @@ import { PageLoader } from 'widgets/PageLoader';
 
 const App = () => {
     const { theme } = useTheme();
-    //
+
     //is used to see errorBoundary
     // useEffect(() => {
     //     if (Math.random() < 0.5) {

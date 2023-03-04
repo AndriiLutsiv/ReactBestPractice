@@ -15,7 +15,8 @@
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "build-storybook": "build-storybook -c ./config/storybook",
     "test-ui": "npx loki test --port 6007",
-    "test-ui-ok": "npx loki approve"
+    "test-ui-ok": "npx loki approve",
+    "test-ui-ci": "loki --requireReference --reactUri file:./storybook-static"
   },
   "keywords": [],
   "author": "",
