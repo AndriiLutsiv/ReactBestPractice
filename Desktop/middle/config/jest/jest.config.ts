@@ -20,7 +20,7 @@ export default {
         'node',
     ],
     moduleDirectories: [
-        'node_modules'
+        'node_modules',
     ],
     modulePaths: [
         '<rootDir>src',
@@ -34,8 +34,6 @@ export default {
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
         '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
-        'src/(.*)': '<rootDir>/src/$1',
-        'tests/(.*)': '<rootDir>/__tests__/$1',
     },
     // Indicates whether the coverage information should be collected while executing the test
     // collectCoverage: false,
