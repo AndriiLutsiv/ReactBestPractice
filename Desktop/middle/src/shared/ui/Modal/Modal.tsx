@@ -1,3 +1,4 @@
+import { useTheme } from 'app/providers/ThemeProvider';
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from '../Portal/Portal';
@@ -10,10 +11,9 @@ interface ModalProps {
     onClose?: () => void;
 }
 
-const ANIMATION_DELAY = 300;
-
 export const Modal = (props: ModalProps) => {
     const { className, children, isOpen, onClose } = props;
+    const { theme } = useTheme();
 
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
